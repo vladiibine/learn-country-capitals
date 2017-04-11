@@ -88,11 +88,16 @@ window.onload = function(){
         var shuffled_buttons = shuffledArray([b1, b2, b3, b4]);
         for(let button of shuffled_buttons){
             button.style.display = 'block';
+            // TODO - there's probably some memory leak going on here... probably event handlers
+            // should be removed differently. If not, garbage collect ftw, but I doubt I'm that lucky
+            button.onclick = undefined;
         }
         var correct_button = shuffled_buttons.splice(0, 1)[0];
         var incorrect_buttons = shuffled_buttons;
 
         var country_keys = Object.keys(countries_map);
+        document.getElementById('country_name').innerHTML = country_keys[country_choices.countries[turn]];
+
         var country_capitals = [];
 
         for(let capital_index of country_choices.capitals[turn]){
@@ -103,8 +108,9 @@ window.onload = function(){
 
         correct_button.innerHTML = country_capitals[0];
         for(let index=0; index<3; index++){
-            incorrect_buttons[index].innerHTML = country_capitals[index];
-            incorrect_buttons.onclick = function(){
+            // cuz 0 is the correct one, and we've already used that
+            incorrect_buttons[index].innerHTML = country_capitals[index + 1];
+            incorrect_buttons[index].onclick = function(){
                 alert("BAD! it was " + country_capitals[0]);
                 // TODO - this will fail after we hit the last turn
                 // TODO - this probably will go on an infinite loop? Not really, this is a handler....
