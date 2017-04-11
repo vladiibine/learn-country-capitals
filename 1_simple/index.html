@@ -4,9 +4,39 @@
     <meta charset="UTF-8">
     <title>Learn the capitals!</title>
     <script src="countries.js"></script>
+    <script src="main.js"></script>
+    <style>
+        button {
+            display: none;
+        }
+    </style>
 </head>
 <body>
 <!--Play the game 15 times: Show a random country, and give 4 random capitals-->
 <!--You can play per continent, or globally-->
-</body>
+<form>
+    <label for="all_countries">All countries</label>
+    <input type="radio" id="all_countries" name="countries">
+    <label for="africa">Africa</label>
+    <input type="radio" id="africa" name="countries">
+    <label for="asia">Asia</label>
+    <input type="radio" id="asia" name="countries">
+    <label for="north_america">North America</label>
+    <input type="radio" id="north_america" name="countries">
+    <label for="south_america">South America</label>
+    <input type="radio" id="south_america" name="countries">
+    <label for="australia_and_oceania">Australia and Oceania</label>
+    <input type="radio" id="australia_and_oceania" name="countries">
+    <label for="europe">Europe</label>
+    <input type="radio" id="europe" checked name="countries">
+</form>
+
+<p id="country_name"></p>
+<div>
+    <button id="capital1"></button>
+    <button id="capital2"></button>
+    <button id="capital3"></button>
+    <button id="capital4"></button>
+</div>
+    </body>
 </html>
