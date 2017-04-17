@@ -80,6 +80,14 @@ window.onload = function(){
      * @param {number} turn - the turn we're at (so we know where in country_choices to look)
      */
     function drawButtons(country_choices, countries_map, turn){
+        document.getElementById('score').innerHTML = score;
+        if(turn >= country_choices.countries.length){
+            alert(
+                "Congrats!!! You achieved "
+                + score + " out of " + TURNS + " => " + (score / TURNS) * 100 + "%" + ". Refresh to play again!"
+            )
+        }
+
         var b1 = document.getElementById('capital1');
         var b2 = document.getElementById('capital2');
         var b3 = document.getElementById('capital3');
@@ -127,18 +135,24 @@ window.onload = function(){
             drawButtons(country_choices, countries_map, turn+1)
         };
 
-        function bad(){
-            alert("BAD! It was" + country_capitals[0]);
-
-        }
-
-
     }
 
-    var checked_input = getOption();
-    var countries_map = getCountriesMap(checked_input);
-    var score = 0;
-    var country_choices = getCountriesForGameRound(15, 4, countries_map);
+    function redraw(){
+        var checked_input = getOption();
+        var countries_map = getCountriesMap(checked_input);
+        var country_choices = getCountriesForGameRound(TURNS, 4, countries_map);
 
-    drawButtons(country_choices, countries_map, 0);
+        drawButtons(country_choices, countries_map, 0);
+    }
+
+    const TURNS = 20;
+    var score = 0;
+
+    redraw();
+    
+    var countryRadios = document.querySelectorAll('[name=countries]');
+    for(let inputField of countryRadios){
+        inputField.addEventListener('click', redraw)
+    }
+
 };
