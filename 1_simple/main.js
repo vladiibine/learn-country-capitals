@@ -119,7 +119,10 @@ window.onload = function(){
             // cuz 0 is the correct one, and we've already used that
             incorrect_buttons[index].innerHTML = country_capitals[index + 1];
             incorrect_buttons[index].onclick = function(){
-                alert("BAD! it was " + country_capitals[0]);
+                document.getElementById('last_turn_result').innerHTML = (
+                "BAD! :( The capital of " +
+                Object.keys(countries_map)[country_choices.countries[turn]] +
+                " is " + country_capitals[0]);
                 // TODO - this will fail after we hit the last turn
                 // TODO - this probably will go on an infinite loop? Not really, this is a handler....
                 // anyway, something weird can happen here, but i don't think it does.
@@ -129,7 +132,10 @@ window.onload = function(){
 
         correct_button.onclick = function (evt){
             // This button holds the true capital
-            alert("GOOD! Indeed it's " + country_capitals[0]);
+            document.getElementById('last_turn_result').innerHTML =
+                "GOOD! :) Indeed the capital of " +
+                Object.keys(countries_map)[country_choices.countries[turn]] +
+                " is " + country_capitals[0];
             score += 1;
             // TODO - This also fails after the last turn;
             drawButtons(country_choices, countries_map, turn+1)
