@@ -144,6 +144,7 @@ window.onload = function(){
     }
 
     function redraw(){
+        score = 0;
         var checked_input = getOption();
         var countries_map = getCountriesMap(checked_input);
         var country_choices = getCountriesForGameRound(TURNS, 4, countries_map);
@@ -152,7 +153,7 @@ window.onload = function(){
     }
 
     const TURNS = 20;
-    var score = 0;
+    var score;
 
     redraw();
     
