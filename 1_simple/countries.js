@@ -137,7 +137,6 @@ europe_countries = {
     "Italy": "Rome",
     "Kazakhstan": "Astana",
     "Kosovo": "Pristina",
-    "Country": "Capital city",
     "Latvia": "Riga",
     "Liechtenstein": "Vaduz",
     "Lithuania": "Vilnius",
